@@ -1,0 +1,10 @@
+{
+  "name": "Ask The Master",
+  "integrations": {
+    "capacitor": {
+      "enabled": false
+    },
+    "cordova": {}
+  },
+  "type": "angular"
+}

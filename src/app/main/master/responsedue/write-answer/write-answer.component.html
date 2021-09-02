@@ -1,0 +1,128 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="" (click)="closeModal()"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{headerTitle|uppercase}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+
+    <!-- Question Data -->
+    <ion-row>
+
+      <ion-col size="10">
+        <ion-icon name="help-circle-outline"></ion-icon>{{PostData?.title}}
+      </ion-col>
+
+      <ion-col *ngIf="PostData?.sections.length!=0">
+        <ion-button fill="clear" (click)="show()">
+          <ion-icon id="expand" *ngIf="expand==false" name="expand-outline"></ion-icon>
+          <ion-icon id="expand" *ngIf="expand==true" name="contract-outline"></ion-icon>
+        </ion-button>
+      </ion-col>
+
+    </ion-row>
+
+    <ion-row>
+
+      <ion-col size="auto" *ngFor="let ce of CarExtra|keyvalue">
+        <div id="pills">
+          <ion-chip *ngIf="ce.value!=undefined||null">
+            <ion-label>{{ce.value}}</ion-label>
+          </ion-chip>
+        </div>
+      </ion-col>
+
+      <ion-col size="auto" *ngFor="let cd of PostData['carData']| keyvalue">
+        <div id="pills">
+          <ion-chip>
+            <ion-label>{{cd.value}}</ion-label>
+          </ion-chip>
+        </div>
+      </ion-col>
+
+    </ion-row>
+
+    <!-- expand -->
+    <div *ngIf="expand" id="expanded-content">
+      <ion-row *ngFor="let data of PostData.sections | keyvalue">
+
+        <div class="content">
+          <div *ngIf="checkType(data.value)">
+            <quill-view [content]="data.value['Text']" format="html" theme="snow"></quill-view>
+          </div>
+        </div>
+
+        <div class="content">
+          <div *ngIf="checkType(data.value)">
+            <img [src]="data.value['file']['url']" height="250" width="275" />
+          </div>
+        </div>
+
+        <div class="content">
+          <div *ngIf="checkType(data.value)">
+            <img (click)="openDocument(data.value['file']['url'])" height="100" width="100"
+              src="../../../../assets/images/27_Pdf_File_Type_Adobe_logo_logos-512.webp" />
+          </div>
+
+        </div>
+
+      </ion-row>
+
+    </div>
+
+    <!-- functionality tab -->
+    <ion-row class="tabs">
+
+      <ion-col size="4">
+        <ion-button (click)="openDynaComponents('textcontainer')">
+          <ion-icon slot="start" name="text-sharp"></ion-icon>Text
+        </ion-button>
+      </ion-col>
+
+      <ion-col size="4">
+        <ion-button (click)="openDynaComponents('cameracontainer')">
+          <ion-icon slot="start" name="camera-sharp"></ion-icon>Camera
+        </ion-button>
+      </ion-col>
+
+      <ion-col size="4">
+        <ion-button (click)="openDynaComponents('documentcontainer')">
+          <ion-icon slot="start" name="document-text-sharp"></ion-icon>PDF
+        </ion-button>
+      </ion-col>
+
+    </ion-row>
+
+    <ion-row>
+      <ion-col class="ion-margin-top">
+        <form [formGroup]="answerTitle">
+          <quill-editor (onEditorChanged)="changeEditor($event)" (onEditorCreated)="onChange($event)"
+            formControlName="editor" [styles]="{height: '150px'}" [modules]="modules" [required]="true">
+          </quill-editor>
+        </form>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col>
+        <div>
+          <ng-template #loadcontainer></ng-template>
+        </div>
+      </ion-col>
+    </ion-row>
+
+  </ion-grid>
+
+</ion-content>
+
+<ion-footer class="ion-no-padding ion-no-margin">
+  <p id="text">*Please Confirm content before Submitting the form</p>
+  <ion-button expand="full" (click)="onSubmit()">
+    <ion-icon name="checkmark-circle-outline"></ion-icon>
+    {{btnText|uppercase}}
+  </ion-button>
+</ion-footer>

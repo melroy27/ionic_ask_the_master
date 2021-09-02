@@ -1,0 +1,237 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="" (click)="closeModal()"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{headerTitle|uppercase}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-card-content>
+      <ion-row>
+
+        <ion-col>
+          <!-- row for the header and expandable -->
+          <ion-row>
+            <ion-col size="1" *ngIf="data?.askedBy.userId==this.userData.uid && data?.totalAnswers==0">
+              <ion-button fill=" clear" (click)="edit()">
+                <ion-icon name="pencil-outline"></ion-icon>
+              </ion-button>
+            </ion-col>
+            <ion-col size="8">
+              <ion-card-header>
+                <ion-card-subtitle>
+                  <ion-icon name="help-circle-outline" style="margin-right: 5px;"></ion-icon>{{ data?.title }}
+                </ion-card-subtitle>
+              </ion-card-header>
+            </ion-col>
+
+            <ion-col *ngIf="data?.sections.length!=0">
+              <ion-button fill="clear" (click)="show()">
+                <ion-icon id="expand" *ngIf="expand==false" name="expand-outline"></ion-icon>
+                <ion-icon id="expand" *ngIf="expand==true" name="contract-outline"></ion-icon>
+              </ion-button>
+            </ion-col>
+          </ion-row>
+
+          <!-- Chip Data -->
+
+          <ion-row *ngIf="carExtra">
+
+            <ion-col class="ion-no-padding" size="auto" *ngFor="let ce of carExtra| keyvalue">
+              <div class="content">
+                <ion-chip *ngIf="ce.value!=undefined || ce.value!=null">
+                  <ion-label>{{ce.value}}</ion-label>
+                </ion-chip>
+              </div>
+            </ion-col>
+
+            <ion-col class="ion-no-padding" size="auto" *ngFor="let ce of data?.carData| keyvalue">
+              <div class="content">
+                <ion-chip *ngIf="ce.value!=undefined || ce.value!=null">
+                  <ion-label>{{ce.value}}</ion-label>
+                </ion-chip>
+              </div>
+            </ion-col>
+
+          </ion-row>
+
+          <ion-row *ngIf="data?.askedBy.userId!=this.userData.uid">
+            <ion-col size="12">
+              <div class="centerBtn">
+                <ion-button (click)="openRatingPopover($event,'question',data)">Rate Question</ion-button>
+              </div>
+            </ion-col>
+          </ion-row>
+
+        </ion-col>
+
+      </ion-row>
+
+      <!-- expand -->
+      <div *ngIf="expand" id="expanded-content">
+        <ion-row *ngFor="let data of data.sections | keyvalue">
+
+          <div class="content">
+            <div *ngIf="this.helperFunc.isHtml(data.value)">
+              <quill-view [content]="data.value['Text']" format="html" theme="snow"></quill-view>
+            </div>
+          </div>
+
+          <div class="content">
+            <div *ngIf="this.helperFunc.isImage(data.value)">
+              <img [src]="data.value['file']['url']" height="250" width="275" />
+            </div>
+          </div>
+
+          <div class="content">
+            <div *ngIf="this.helperFunc.isDocument(data.value)">
+              <img (click)="openDocument(data.value['file']['url'])" height="100" width="100"
+                src="../../../../assets/images/27_Pdf_File_Type_Adobe_logo_logos-512.webp" />
+            </div>
+
+          </div>
+
+        </ion-row>
+
+      </div>
+
+    </ion-card-content>
+  </ion-card>
+
+
+  <ion-card *ngIf="!data?.totalAnswers">
+    <p class="answer-styling">NO ONE HAS ANSWERED YOUR QUESTION...</p>
+  </ion-card>
+
+  <div *ngIf="data?.totalAnswers">
+    <ion-label style="padding-left: 10px;">
+      Answers:
+    </ion-label>
+  </div>
+
+  <!-- presenting the answer  -->
+
+  <div *ngIf="data?.totalAnswers>='1'" class="ion-no-padding">
+    <ion-row>
+      <ion-col>
+        <ion-card *ngFor="let data of answerList; let i=index">
+          <ion-row>
+            <ion-col>
+              <ion-card-header class="ion-no-padding">
+                <ion-row>
+                  <ion-col class="ion-no-padding">
+                    <ion-card-title>
+                      <quill-view [content]="data.title" format="html" theme="snow">
+                      </quill-view>
+                    </ion-card-title>
+                  </ion-col>
+
+                </ion-row>
+
+              </ion-card-header>
+
+            </ion-col>
+
+            <ion-col size="12">
+              <ion-card-content>
+                <ion-row *ngFor="let se of data.sections | keyvalue">
+
+                  <div class="content">
+                    <div *ngIf="this.helperFunc.isHtml(se.value)">
+                      <quill-view [content]="se.value['Text']" format="html" theme="snow">
+                      </quill-view>
+                    </div>
+                  </div>
+
+                  <div class="content">
+                    <div *ngIf="this.helperFunc.isImage(se.value)">
+                      <img [src]="se.value['file']['url']" height="250" width="275" />
+                    </div>
+                  </div>
+
+                  <div class="content">
+                    <div *ngIf="this.helperFunc.isDocument(se.value)">
+                      <img (click)="openDocument(se.value['file']['url'])" height="100" width="100"
+                        src="../../../../assets/images/27_Pdf_File_Type_Adobe_logo_logos-512.webp" />
+                    </div>
+                  </div>
+
+                </ion-row>
+
+                <hr>
+
+                <ion-row>
+
+                  <!-- col for info -->
+                  <ion-col size="8">
+                    <ion-row>
+                      <ion-col class="ion-no-padding">
+                        <div class="content1">
+                          <ion-icon name="person"></ion-icon>
+                          <ion-label>Answered By: {{ data.answeredBy.name }}</ion-label>
+                          <br>
+                        </div>
+
+                      </ion-col>
+
+                      <ion-row>
+                        <ion-col class="ion-no-padding">
+                          <div class="content2">
+                            <ion-icon name="calendar"></ion-icon>
+                            <ion-label>Posted On: {{ data.creationTime|date}}</ion-label>
+                            <br>
+                          </div>
+
+                        </ion-col>
+                      </ion-row>
+
+                    </ion-row>
+                  </ion-col>
+
+                  <!-- col for rating -->
+                  <ion-col>
+                    <ion-row>
+                      <ion-col class="ion-no-padding ion-text-center">
+                        <!-- this is for the rating -->
+                        <div class="ion-margin-top">
+                          <ion-row>
+                            <ion-col *ngFor="let rating of data['rating']| keyvalue; let i=index">
+                              <ion-icon name="star" [style.color]='colors[i]'></ion-icon>
+                              <ion-col>
+                                <ion-label>{{rating.value}}</ion-label>
+                              </ion-col>
+                            </ion-col>
+                          </ion-row>
+
+                        </div>
+
+                      </ion-col>
+                    </ion-row>
+                  </ion-col>
+
+                </ion-row>
+
+                <ion-row>
+                  <ion-col size="12" class="ion-no-padding">
+                    <div class="centerBtn">
+                      <ion-button (click)="openRatingPopover($event,'answer',data)">Rate Answer</ion-button>
+                    </div>
+                  </ion-col>
+                </ion-row>
+
+              </ion-card-content>
+            </ion-col>
+
+          </ion-row>
+
+        </ion-card>
+
+      </ion-col>
+    </ion-row>
+  </div>
+
+
+</ion-content>

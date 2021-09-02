@@ -1,0 +1,47 @@
+<div>
+  <ion-grid>
+
+    <ion-row>
+      <ion-col size="10" ion-padding>
+        <ion-label>
+          <ion-icon name="document-text-outline"></ion-icon> PDF
+        </ion-label>
+      </ion-col>
+      <ion-col size="2">
+        <ion-button fill="clear" (click)="remove()">
+          <ion-icon slot="end" name="close-outline"></ion-icon>
+        </ion-button>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col offset="4" *ngIf="!confirmCheck">
+        <ion-button fill="clear" (click)="uploadPdf()">
+          <ion-icon name="cloud-upload-outline"></ion-icon>
+        </ion-button>
+      </ion-col>
+    </ion-row>
+
+    <div *ngIf="fileUrl">
+      <ion-row size="12">
+        <ion-col size="8" offset="2">
+          <img (click)="openDocument()" height="100" width="100"
+            src="../../../../../assets/images/27_Pdf_File_Type_Adobe_logo_logos-512.webp" />
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="6">
+          <ion-button [disabled]="confirmCheck" id="confirm" size="small" fill="clear" (click)="confirm()">
+            <ion-icon slot="end" name="checkmark-circle"></ion-icon>
+          </ion-button>
+        </ion-col>
+        <ion-col size="6">
+          <ion-button [disabled]="editCheck" id="edit" size="small" fill="clear" (click)="edit()">
+            <ion-icon name="pencil"></ion-icon>
+          </ion-button>
+        </ion-col>
+      </ion-row>
+    </div>
+
+  </ion-grid>
+</div>

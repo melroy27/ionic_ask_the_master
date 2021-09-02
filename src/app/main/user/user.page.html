@@ -1,0 +1,19 @@
+<ion-tabs (ionTabsDidChange)="getSelectedTab()" #myTabs>
+  <ion-tab-bar slot="bottom">
+    <ion-tab-button tab="home" layout="icon-top">
+      <ion-icon id="btn" name="home-sharp"></ion-icon>
+    </ion-tab-button>
+    <ion-tab-button tab="newresponse" layout="icon-top">
+      <ion-icon name="mail-open-sharp"></ion-icon>
+    </ion-tab-button>
+    <ion-tab-button tab="activity" layout="icon-top">
+      <ion-icon name="bar-chart-sharp"></ion-icon>
+    </ion-tab-button>
+    <ion-tab-button tab="profile" layout="icon-top">
+      <ion-icon name="person-sharp"></ion-icon>
+    </ion-tab-button>
+    <ion-tab-button tab="notifications" layout="icon-top">
+      <ion-icon name="notifications-sharp"></ion-icon>
+    </ion-tab-button>
+  </ion-tab-bar>
+</ion-tabs>

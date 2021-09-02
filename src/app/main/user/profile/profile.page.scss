@@ -1,0 +1,37 @@
+.bg {
+  width: max-content;
+  height: 200px;
+  z-index: -1000;
+}
+.form-main {
+  height: 10px;
+}
+.form-logo {
+  transform: translate(0, -60%);
+  ion-avatar {
+    width: 75px;
+    height: 75px;
+  }
+}
+.form-camera {
+  transform: translate(-60%, -5%);
+  ion-button {
+    margin: 0px;
+    padding: 0px;
+  }
+  ion-icon {
+    width: 30px;
+    height: 30px;
+    color: rgb(56, 13, 13);
+  }
+}
+.form-logout {
+  transform: translate(0, -35%);
+}
+
+.inputfld {
+  margin-top: 25px;
+}
+.dealer {
+  padding-top: 10px;
+}

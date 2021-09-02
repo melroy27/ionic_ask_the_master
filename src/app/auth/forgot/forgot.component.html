@@ -1,0 +1,43 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Forgot Password</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="dismissmodal()">CLOSE</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="header">
+    <p>Please Enter Your Email-ID below to move forward </p>
+  </div>
+  <ion-grid>
+    <div class="main">
+      <form [formGroup]="passForm" (ngSubmit)="onSubmit()">
+        <ion-row>
+          <ion-col>
+            <div class="input-email">
+              <ion-item>
+                <ion-label position="floating">Enter Your Email</ion-label>
+                <ion-input type="text" autocomplete="email" inputmode="email" required formControlName="email">
+                </ion-input>
+              </ion-item>
+            </div>
+          </ion-col>
+        </ion-row>
+
+        <!-- Checking Entered Email ... -->
+        <ion-row>
+          <ion-col size=" 12">
+            <div class="frgt-btn">
+              <ion-button type="submit" color="primary" expand="block" [disabled]="passForm.invalid">
+                Send OTP
+              </ion-button>
+            </div>
+          </ion-col>
+        </ion-row>
+      </form>
+    </div>
+
+  </ion-grid>
+</ion-content>

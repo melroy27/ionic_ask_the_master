@@ -1,0 +1,35 @@
+@media only screen and (max-width: 600px) {
+  ion-icon #expand {
+    font-size: 25px;
+  }
+  ion-col #expanded-content {
+    border-top: 1px;
+  }
+  .answer-styling {
+    text-align: center;
+  }
+  .content {
+    align-items: center;
+    padding-left: 15px;
+    padding-right: 25px;
+    font-size: 15px;
+  }
+
+  .content1 {
+    font-size: 15px;
+    transform: translate(20%, 0%);
+  }
+  .content2 {
+    font-size: 15px;
+    transform: translate(20%, 0%);
+  }
+  #cont_rating {
+    transform: translate(50%, 0%);
+  }
+  .chips {
+    ion-label {
+      font-size: 14px;
+      text-transform: uppercase;
+    }
+  }
+}

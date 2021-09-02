@@ -1,0 +1,98 @@
+ion-grid {
+  border-style: solid;
+  border-width: 1px;
+  border-color: rgb(121, 123, 123);
+}
+ion-row {
+  border-style: solid;
+  border-width: 1px;
+  border-color: rgb(121, 122, 123);
+}
+ion-col {
+  padding: 0px;
+  border-width: 1px;
+  border-color: rgb(0, 0, 0);
+}
+ion-slide {
+  height: 100px;
+  width: 100px;
+}
+ion-slides {
+  height: 100%;
+  width: 100%;
+}
+ion-image {
+  width: 100px;
+  height: 100px;
+}
+#carlogo {
+  margin: 5px;
+}
+#head {
+  transform: rotate(-90deg);
+  color: whitesmoke;
+}
+#head p {
+  text-transform: uppercase;
+  transform: translate(-16px);
+  text-align: center;
+}
+#headmain {
+  background-color: black;
+  height: 100px;
+  border-style: solid;
+  border-width: 1px;
+  border-color: rgb(121, 122, 123);
+}
+#datamain {
+  border-width: 1px;
+  border-style: solid;
+  width: 100px;
+  height: 100px;
+}
+
+#data {
+  width: 100px;
+  height: 100px;
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 50%;
+}
+
+#data-modified {
+  width: 102px;
+  height: 101px;
+  border-style: solid;
+  border-width: 1px;
+}
+.data-style {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin: 0px;
+  transform: translate(-50%, -50%);
+}
+.data-style-modified {
+  width: 100px;
+  height: 100px;
+}
+.data-style-modified img {
+  width: 99px;
+  height: 75px;
+}
+.data-style-modified p {
+  width: 99px;
+  height: 22px;
+  color: whitesmoke;
+  margin: 0px;
+  margin-top: -5px;
+}
+#carname {
+  background-color: rgb(25, 11, 119);
+}
+.bgClr {
+  border-color: rgb(255, 0, 0);
+}
+#main-row {
+  height: 100px;
+}

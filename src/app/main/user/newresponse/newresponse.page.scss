@@ -1,0 +1,59 @@
+@media only screen and (max-width: 600px) {
+  ion-grid {
+    border-width: 0px;
+  }
+  ion-row {
+    border-width: 0px;
+  }
+  ion-col {
+    border-width: 0px;
+  }
+  ion-virtual-scroll {
+    padding-bottom: 10px;
+  }
+  .card {
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+  .card-header {
+    padding-left: 3px;
+    padding-top: 4px;
+    padding-right: 0px;
+    padding-bottom: 3px;
+    font-size: 15px;
+  }
+  .content {
+    padding-left: 15px;
+    padding-right: 25px;
+    font-size: 15px;
+  }
+  .rating {
+    text-align: center;
+  }
+  #pillsCol {
+    padding: 0px;
+  }
+  #ansChip {
+    background-color: black;
+    ion-label {
+      color: white;
+    }
+  }
+  #pills {
+    padding-left: 4px;
+    padding-bottom: 4px;
+    color: black;
+  }
+  #pills ion-label {
+    font-size: 14px;
+    text-transform: uppercase;
+  }
+  .contentwhole {
+    margin: 0;
+    padding: 0;
+  }
+  #postedOn {
+    display: flex;
+    transform: translate(0, 25%);
+  }
+}

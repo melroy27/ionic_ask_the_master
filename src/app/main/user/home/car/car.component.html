@@ -1,0 +1,153 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="" (click)="closeModal()"></ion-back-button>
+    </ion-buttons>
+    <ion-title class="ion-text-center">{{headerTitle|uppercase}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <!-- First Row -->
+    <ion-row id="main-row">
+
+      <ion-col size="2" id="headmain">
+        <div id="head">
+          <p>Brand</p>
+        </div>
+      </ion-col>
+
+      <ion-col size="4">
+        <div id="carlogo">
+          <img [src]="localStrCarData[0]['brandImage']" />
+        </div>
+      </ion-col>
+
+    </ion-row>
+
+    <!-- Second Row -->
+    <ion-row id="main-row">
+      <ion-col size="2" id="headmain">
+        <div id="head">
+          <p>Model</p>
+        </div>
+      </ion-col>
+
+      <ion-col size="10" id="slides">
+
+        <ion-slides [options]="sliderConfig">
+          <ion-slide *ngFor="let car of carmodel; let i=index">
+            <div id="data-modified" [ngClass]="{'bgClr': i == modelval}">
+              <div class="data-style-modified" (click)="showBodyType(car.mname,i)">
+                <img src={{car?.mimage}} />
+                <p id="carname">
+                  {{car?.mname|uppercase}}</p>
+              </div>
+            </div>
+          </ion-slide>
+        </ion-slides>
+
+      </ion-col>
+
+    </ion-row>
+
+    <!-- Third Row -->
+    <ion-row id="main-row">
+
+      <ion-col size="2" id="headmain">
+        <div id="head">
+          <p>Body Type</p>
+        </div>
+      </ion-col>
+
+      <ion-col size="10">
+        <ion-slides [options]="sliderConfig">
+          <ion-slide *ngFor="let btype of bodyType; let i=index">
+            <div id="data" [ngClass]="{'bgClr': i == bodyval}">
+              <div class="data-style" (click)="showEngineType(btype.name)">
+                <p>{{btype.name|uppercase}}</p>
+              </div>
+            </div>
+          </ion-slide>
+        </ion-slides>
+      </ion-col>
+
+    </ion-row>
+
+    <!-- Fourth Row -->
+    <ion-row id="main-row">
+      <ion-col size="2" id="headmain">
+        <div id="head">
+          <p>Engine</p>
+        </div>
+      </ion-col>
+
+      <ion-col size="10">
+        <ion-slides [options]="sliderConfig">
+          <ion-slide *ngFor="let engType of engineType; let i=index">
+            <div id="data" [ngClass]="{'bgClr': i == engineval}">
+              <div class="data-style">
+                <p (click)="showTranmissionType(engType.enginetype)">{{engType.enginetype|uppercase}}</p>
+              </div>
+            </div>
+          </ion-slide>
+        </ion-slides>
+      </ion-col>
+
+    </ion-row>
+
+    <!-- Fifth Row -->
+    <ion-row id="main-row">
+      <ion-col size="2" id="headmain">
+        <div id="head">
+          <p>Trans</p>
+        </div>
+
+      </ion-col>
+
+      <ion-col size="10">
+        <ion-slides [options]="sliderConfig">
+          <ion-slide *ngFor="let trans of transmissionType;let i=index">
+            <div id="data" [ngClass]="{'bgClr': i == transval}">
+              <div class="data-style">
+                <p (click)="showYear(trans.transtype)">{{trans.transtype|uppercase}}</p>
+              </div>
+            </div>
+          </ion-slide>
+        </ion-slides>
+      </ion-col>
+
+    </ion-row>
+
+    <!-- Sixth Row -->
+    <ion-row id="main-row">
+      <ion-col size="2" id="headmain">
+        <div id="head">
+          <p>Year</p>
+        </div>
+      </ion-col>
+
+      <ion-col size="10">
+        <ion-slides [options]="sliderConfig">
+          <ion-slide *ngFor="let year of yearModel;let i=index">
+            <div id="data" [ngClass]="{'bgClr': i == yearval}">
+              <div class="data-style">
+                <p (click)="getyear(year.yearmodel)"> {{year.yearmodel}}</p>
+              </div>
+            </div>
+          </ion-slide>
+        </ion-slides>
+      </ion-col>
+
+    </ion-row>
+
+  </ion-grid>
+
+</ion-content>
+
+<ion-footer class="ion-no-padding ion-no-margin">
+  <ion-button expand="full" [disabled]="checkSelection" (click)="questionModal()">
+    NEXT
+  </ion-button>
+</ion-footer>

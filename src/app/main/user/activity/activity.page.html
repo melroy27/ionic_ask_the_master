@@ -1,0 +1,13 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>{{headerTitle|uppercase}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-segment value="asked" (ionChange)="onFilterUpdate($event)">
+    <ion-segment-button value="asked">Question's Asked</ion-segment-button>
+    <ion-segment-button value="answered">Questions's Answererd</ion-segment-button>
+  </ion-segment>
+  <canvas id="myChart"></canvas>
+</ion-content>

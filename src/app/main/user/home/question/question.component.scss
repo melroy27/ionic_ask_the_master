@@ -1,0 +1,88 @@
+ion-grid {
+  border-width: 0px;
+}
+ion-row {
+  border-width: 0px;
+  margin: 0px;
+}
+ion-col {
+  border-width: 0px;
+  padding: 0px;
+}
+
+#text {
+  font-size: 13px;
+  color: black;
+  text-align: center;
+  padding: 0px;
+  margin: 0px;
+}
+.tabs {
+  text-align: center;
+  align-items: center;
+}
+#cardata {
+  background-color: rgb(186, 186, 186);
+  margin-top: 10px;
+  margin-bottom: 10px;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+#pills {
+  padding: 5px;
+  color: black;
+}
+#pills ion-label {
+  font-size: 14px;
+  text-transform: uppercase;
+}
+.quesHead {
+  padding-left: 5px;
+}
+.quesData {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+.answer-styling p {
+  text-align: center;
+}
+.similar {
+  .card-header {
+    padding-left: 5px;
+    padding-top: 5px;
+    padding-right: 0px;
+    padding-bottom: 5px;
+  }
+  .content {
+    padding-left: 15px;
+    padding-right: 25px;
+  }
+  .content1 {
+    ion-icon {
+      padding-right: 5px;
+    }
+    padding-bottom: 10px;
+  }
+  .content2 {
+    ion-icon {
+      padding-right: 5px;
+    }
+    padding-bottom: 10px;
+  }
+  .rating {
+    text-align: center;
+  }
+  #pillsCol {
+    padding: 0px;
+  }
+  #pills {
+    padding-left: 4px;
+    padding-bottom: 2px;
+    color: black;
+  }
+  #pills ion-label {
+    font-size: 14px;
+    text-transform: uppercase;
+  }
+}

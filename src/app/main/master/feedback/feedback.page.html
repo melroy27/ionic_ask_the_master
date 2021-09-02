@@ -1,0 +1,57 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title class="ion-text-center">{{headerTitle|uppercase}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+
+  <ion-grid>
+    <!-- rating Banner -->
+    <ion-row class="ratin">
+
+      <ion-col class="rating">
+        <ion-icon name="star" style="color: red;"></ion-icon>
+        <ion-row>
+          <ion-col>
+            <ion-label>Not Resolved</ion-label>
+          </ion-col>
+        </ion-row>
+      </ion-col>
+
+      <ion-col class="rating">
+        <ion-icon name="star" style="color: yellow;"></ion-icon>
+        <ion-row>
+          <ion-col>
+            <ion-label>Partially Resolved</ion-label>
+          </ion-col>
+        </ion-row>
+      </ion-col>
+
+      <ion-col class="rating">
+        <ion-icon name="star" style="color: green;"></ion-icon>
+        <ion-row>
+          <ion-col>
+            <ion-label>Resolved</ion-label>
+          </ion-col>
+        </ion-row>
+      </ion-col>
+
+    </ion-row>
+    <hr>
+    <!-- list of question title with their answer rating-->
+    <ion-row *ngFor="let qs of map |keyvalue">
+
+      <ion-col size="8" class="ion-padding">
+        <ion-icon id="rating_icon" name="help-circle-outline"></ion-icon>
+        <ion-label id="rating_title"> {{qs.value[0]}}</ion-label>
+      </ion-col>
+
+      <ion-col size="4">
+        <canvas id={{qs.value[1]}}></canvas>
+      </ion-col>
+
+    </ion-row>
+
+  </ion-grid>
+
+</ion-content>

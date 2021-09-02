@@ -1,0 +1,36 @@
+<div>
+  <ion-grid>
+    <ion-row>
+      <ion-col size="10" ion-padding>
+        <p>Text</p>
+      </ion-col>
+      <ion-col size="2">
+        <ion-button fill="clear" (click)="remove()">
+          <ion-icon slot="end" name="close-outline"></ion-icon>
+        </ion-button>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="12">
+        <form [formGroup]="editorForm">
+          <quill-editor (onEditorChanged)="changeEditor($event)" (onEditorCreated)="onChange($event)"
+            formControlName="editor" [styles]="{height: '150px'}" [modules]="modules" [required]="true">
+          </quill-editor>
+        </form>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="6">
+        <ion-button id="confirm" [disabled]="confirmCheck" size="small" fill="clear" (click)="confirm()">
+          <ion-icon slot="end" name="checkmark-circle"></ion-icon>
+        </ion-button>
+      </ion-col>
+      <ion-col size="6">
+        <ion-button id="edit" size="small" fill="clear" [disabled]="editCheck" (click)="edit()">
+          <ion-icon name="pencil"></ion-icon>
+        </ion-button>
+      </ion-col>
+    </ion-row>
+
+  </ion-grid>
+</div>

@@ -1,0 +1,101 @@
+<ion-content>
+  <img src="https://www.lamborghini.com/sites/it-en/files/DAM/lamborghini/share%20img/masterpieces-facebook-og.jpg"
+    alt="background" class="bg">
+
+  <ion-grid>
+    <ion-row class="form-main">
+      <ion-col class="form-logo">
+        <ion-avatar>
+          <img src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y">
+        </ion-avatar>
+      </ion-col>
+
+      <ion-col class="form-camera">
+        <ion-button fill="clear" (click)="camera()">
+          <ion-icon name="camera-outline"></ion-icon>
+        </ion-button>
+      </ion-col>
+
+      <ion-col class="form-logout">
+        <ion-button shape="round" fill="fill" (click)="logout()">
+          <ion-icon name="log-out-outline"></ion-icon>
+        </ion-button>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-input class="inputfld" placeholder="Enter Username/Name" type="text" [value]="this.fullUserData['name']">
+        </ion-input>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-input class="inputfld" placeholder="Enter Contact Number" type="number"></ion-input>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-input class="inputfld" placeholder="Enter email id" type="email" autocomplete="email"
+          [value]="this.fullUserData['email']"></ion-input>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col>
+        <ion-input class="inputfld" placeholder="Enter Address" type="text" [value]="this.fullUserData['country']">
+        </ion-input>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+
+      <ion-col size="12" class="dealer">
+        <ion-label>Dealer: {{dealerName}}</ion-label>
+        <ion-button fill="clear" (click)="openDealer()" ion-no-padding>
+          <ion-icon name="caret-down-outline"></ion-icon>
+        </ion-button>
+      </ion-col>
+
+    </ion-row>
+
+    <ion-row>
+
+      <ion-col size="4">
+        <ion-input type="number" min="2" max="2" placeholder="Enter Age" inputmode="numeric"></ion-input>
+      </ion-col>
+
+      <p>Gender: </p>
+      <ion-radio-group value="gender">
+        <ion-row>
+          <ion-col>
+            <ion-item lines="none">
+              <ion-icon name="man-outline"></ion-icon>
+              <ion-radio mode="md" item-left value="Male" name="male"></ion-radio>
+            </ion-item>
+          </ion-col>
+
+          <ion-col>
+            <ion-item lines="none">
+              <ion-icon name="woman-outline"></ion-icon>
+              <ion-radio mode="md" item-left value="Female" name="female"></ion-radio>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+      </ion-radio-group>
+
+    </ion-row>
+
+    <ion-row>
+
+      <ion-col offset="3">
+        <ion-button shape="round">
+          <ion-icon name="checkmark-circle" style="padding-right: 5px;"></ion-icon>
+          SAVE PROFILE
+        </ion-button>
+      </ion-col>
+
+    </ion-row>
+
+  </ion-grid>
+
+</ion-content>

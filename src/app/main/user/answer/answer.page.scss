@@ -1,0 +1,47 @@
+@media only screen and (max-width: 600px) {
+  ion-icon #expand {
+    font-size: 25px;
+  }
+  ion-col #expanded-content {
+    border-top: 1px;
+  }
+  .answer-styling {
+    text-align: center;
+  }
+  .content {
+    padding: 5px;
+    text-align: center;
+    ion-chip ion-label {
+      font-size: 14px;
+      text-transform: uppercase;
+    }
+  }
+  .content1 {
+    font-size: 15px;
+  }
+  .content2 {
+    font-size: 15px;
+  }
+  .centerBtn {
+    text-align: center;
+  }
+  #content-min {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(30%, 55%);
+  }
+  #content-headers {
+    text-align: center;
+    margin: 5px;
+    ion-icon {
+      float: inline-start;
+    }
+    ion-label {
+      float: inline-start;
+    }
+  }
+  #cont_rating {
+    transform: translate(50%, 0%);
+  }
+}
